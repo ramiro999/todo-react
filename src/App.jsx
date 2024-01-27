@@ -15,7 +15,7 @@ function App() {
             Todo
           </h1>
           <button>
-            <MoonIcon className="fill-red-500" />
+            <MoonIcon />
           </button>
         </div>
 
