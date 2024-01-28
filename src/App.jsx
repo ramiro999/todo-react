@@ -27,6 +27,25 @@ function App() {
         setTodos([...todos, newTodo]);
     };
 
+    const removeTodo = (id) => {
+        setTodos(todos.filter((todo) => todo.id !== id));
+    };
+
+    const updateTodo = (id) => {
+        setTodos(
+            todos.map((todo) => {
+                if (todo.id === id) {
+                    return {
+                        ...todo,
+                        completed: !todo.completed,
+                    };
+                }
+
+                return todo;
+            })
+        );
+    };
+
     return (
         <>
             <div
@@ -39,7 +58,11 @@ function App() {
                 <main className="container mx-auto mt-8 px-4">
                     <TodoCreate createTodo={createTodo} />
 
-                    <TodoList todos={todos} />
+                    <TodoList
+                        todos={todos}
+                        removeTodo={removeTodo}
+                        updateTodo={updateTodo}
+                    />
 
                     <TodoComputed />
 
