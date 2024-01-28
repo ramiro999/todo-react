@@ -1,6 +1,8 @@
 import CrossIcon from "./icons/CrossIcon";
 
-const TodoItem = () => {
+const TodoItem = ({ todo }) => {
+    const { id, title, completed } = todo;
+
     return (
         <>
             <article className="flex gap-4 border-b border-b-gray-400 px-4 py-4">
@@ -8,9 +10,7 @@ const TodoItem = () => {
                     className="inline-block h-5 w-5 flex-none 
             rounded-full border-2"
                 ></button>
-                <p className="grow text-gray-600">
-                    Complete online Javascript curse in bluuweb
-                </p>
+                <p className="grow text-gray-600">{title}</p>
                 <button>
                     <CrossIcon />
                 </button>
