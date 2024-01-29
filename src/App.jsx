@@ -46,6 +46,31 @@ function App() {
         );
     };
 
+    const computedItemsLeft = todos.filter((todo) => !todo.completed).length;
+
+    const clearCompleted = () => {
+        setTodos(todos.filter((todo) => !todo.completed));
+    };
+
+    const [filter, setFilter] = useState("all");
+
+    //Ahora debo hacer la funcion para filtrar los todos
+
+    const filteredTodos = () => {
+        switch (filter) {
+            case "completed":
+                return todos.filter((todo) => todo.completed);
+            case "active":
+                return todos.filter((todo) => !todo.completed);
+            case "all":
+                return todos;
+        }
+    };
+
+    const changeFilter = (filter) => {
+        setFilter(filter);
+    };
+
     return (
         <>
             <div
@@ -59,14 +84,17 @@ function App() {
                     <TodoCreate createTodo={createTodo} />
 
                     <TodoList
-                        todos={todos}
+                        todos={filteredTodos()}
                         removeTodo={removeTodo}
                         updateTodo={updateTodo}
                     />
 
-                    <TodoComputed />
+                    <TodoComputed
+                        computedItemsLeft={computedItemsLeft}
+                        clearCompleted={clearCompleted}
+                    />
 
-                    <TodoFilters />
+                    <TodoFilters changeFilter={changeFilter} filter={filter} />
                 </main>
 
                 <p className="text-center">Drag and drop to reorder list</p>
