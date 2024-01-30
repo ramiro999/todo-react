@@ -74,9 +74,9 @@ function App() {
     return (
         <>
             <div
-                className="min-h-screen 
-    bg-gray-300 bg-[url('./assets/images/bg-mobile-light.jpg')] 
-    bg-contain bg-no-repeat"
+                className="min-h-screen bg-gray-300 
+    bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain 
+    bg-no-repeat dark:bg-gray-900 dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] dark:bg-contain dark:bg-no-repeat"
             >
                 <Header />
 
@@ -97,7 +97,9 @@ function App() {
                     <TodoFilters changeFilter={changeFilter} filter={filter} />
                 </main>
 
-                <p className="text-center">Drag and drop to reorder list</p>
+                <p className="mt-8 text-center dark:text-gray-300">
+                    Drag and drop to reorder list
+                </p>
             </div>
         </>
     );
